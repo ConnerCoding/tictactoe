@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// Place X or O in square when clicked
 const Square = (props) => {
     return (
     <button className="square" onClick={props.onClick}>

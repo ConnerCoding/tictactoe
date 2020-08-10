@@ -47,7 +47,7 @@ class Board extends React.Component {
     }
 }
 
-function calculateWinner(squares, step) {
+function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -63,9 +63,6 @@ function calculateWinner(squares, step) {
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
-    }
-    if (step === 9) {
-        return -1;
     }
     return null;
   }
@@ -106,7 +103,7 @@ class Game extends React.Component {
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
-        const winner = calculateWinner(current.squares, this.state.stepNumber);
+        const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
             const desc = move ?
@@ -120,9 +117,9 @@ class Game extends React.Component {
         });
 
         let status;
-        if (winner && winner !== -1) {
+        if (winner) {
             status = 'Winner: ' + winner;
-        } else if (winner === -1){
+        } else if (this.state.stepNumber === 9){
             status = 'Tie!';
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');

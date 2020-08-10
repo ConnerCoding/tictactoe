@@ -48,6 +48,7 @@ class Board extends React.Component {
 }
 
 function calculateWinner(squares) {
+    // array of all the win conditions
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -60,10 +61,12 @@ function calculateWinner(squares) {
     ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
+      // if all 3 squares of array equal, it is a win
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
     }
+    // return null, no winner
     return null;
   }
 

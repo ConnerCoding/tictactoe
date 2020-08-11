@@ -5,14 +5,15 @@ import './index.css';
 // Place X or O in square when clicked
 const Square = (props) => {
     return (
-    <button className="square" onClick={props.onClick}>
-        {props.value}
-    </button>
+        <button className="square" onClick={props.onClick}>
+            {props.value}
+        </button>
     );
 
 }
 
 class Board extends React.Component {
+    // Draw individual square
     renderSquare(i) {
         return (
           <Square 
@@ -23,9 +24,8 @@ class Board extends React.Component {
         );
     }
 
+    // Draw all squares
     render() {
-        
-
         return (
         <div>
             <div className="board-row">

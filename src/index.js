@@ -72,6 +72,7 @@ function calculateWinner(squares) {
   }
 
 class Game extends React.Component {
+    // Create history and stepNumber to keep track of previous moves
     state = {
         history: [{
             squares: Array(9).fill(null)
@@ -81,12 +82,21 @@ class Game extends React.Component {
     }
 
     handleClick(i) {
+        // Create copy of the current history array
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
+        
+        // Get the most current history of moves object
         const current = history[history.length-1];
+        
+        // Create copy of current squares array
         const squares = current.squares.slice();
+        
+        // If game is won or square is filled return
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
+
+        // Update state with the new square value added
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             history: history.concat([{

@@ -107,6 +107,7 @@ class Game extends React.Component {
         });
     }
 
+    // Jump to the move selected and update state
     jumpTo(step) {
         this.setState({
             stepNumber: step,
